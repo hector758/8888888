@@ -15,9 +15,9 @@ local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 local Camera = Workspace.CurrentCamera
 local Mouse = Player:GetMouse()
--- 🚀 MORTYHUB LOADING SCREEN - NO BLACK BACKGROUND + REAL LOGO
--- 🚀 MORTYHUB LOADING SCREEN - FIXED IMAGE + TIMING
--- 🚀 SIMPLE LOADING SCREEN THAT WORKS
+-- ðŸš€ MORTYHUB LOADING SCREEN - NO BLACK BACKGROUND + REAL LOGO
+-- ðŸš€ MORTYHUB LOADING SCREEN - FIXED IMAGE + TIMING
+-- ðŸš€ SIMPLE LOADING SCREEN THAT WORKS
 local function createLoadingScreen()
   local loadingGui = Instance.new("ScreenGui")
   loadingGui.Name = "MORTYHUBLoadingScreen"
@@ -104,7 +104,7 @@ local function createLoadingScreen()
 
   wait(1)
   loadingGui:Destroy()
-  print("� Loading Complete!")
+  print("… Loading Complete!")
   end)
 end
 
@@ -553,7 +553,7 @@ local function UnanchorCharacter(character)
     local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
     if humanoidRootPart then
       humanoidRootPart.Anchored = false
-      print(" � Character unanchored successfully")
+      print(" … Character unanchored successfully")
     end
   end
   )
@@ -764,7 +764,7 @@ local function DisableGodMode()
     pcall(
     function()
       hrp.CFrame = ClonedHRP.CFrame
-      print(" � Character returned to clone position:", ClonedHRP.Position)
+      print(" … Character returned to clone position:", ClonedHRP.Position)
     end
     )
   end
@@ -772,7 +772,7 @@ local function DisableGodMode()
   -- Restore camera to original character
   if humanoid then
     Camera.CameraSubject = humanoid
-    print("📹 Camera restored to original character")
+    print("ðŸ“¹ Camera restored to original character")
   end
 
   -- Safely disconnect all connections
@@ -794,7 +794,7 @@ local function DisableGodMode()
     pcall(
     function()
       ClonedCharacter:Destroy()
-      print(" � Clone destroyed")
+      print(" … Clone destroyed")
     end
     )
   end
@@ -807,12 +807,12 @@ local function DisableGodMode()
   GodModeEnabled = false
 
   showNotification("God Mode disabled!", 2)
-  print(" � God Mode disabled successfully")
+  print(" … God Mode disabled successfully")
 end
 
 -- Toggle God Mode function (FIXED VERSION)
 local function toggleGodMode(enabled)
-  print("🔄 Toggle God Mode:", enabled)
+  print("ðŸ”„ Toggle God Mode:", enabled)
   features.godMode = enabled
 
   if enabled then
@@ -890,7 +890,7 @@ local function toggleInfiniteHunger(enabled)
   end
   )
 
-  showNotification("🔒 Hunger frozen at " .. frozenHungerValue, 2)
+  showNotification("ðŸ”’ Hunger frozen at " .. frozenHungerValue, 2)
 else
   if HungerConnection then
     HungerConnection:Disconnect()
@@ -905,7 +905,7 @@ else
 
   hungerAttributeName = nil
   frozenHungerValue = nil
-  showNotification("🔓 Hunger unfrozen", 2)
+  showNotification("ðŸ”“ Hunger unfrozen", 2)
 end
 end
 
@@ -993,7 +993,7 @@ if enabled then
   applyNoFog()
   NoFogConnection = RunService.RenderStepped:Connect(applyNoFog)
 
-  showNotification("🌫️ No Fog enabled!", 2)
+  showNotification("ðŸŒ«ï¸ No Fog enabled!", 2)
 else
   if NoFogConnection then
     NoFogConnection:Disconnect()
@@ -1014,7 +1014,7 @@ else
   -- Clear snapshot
   originalFogStart, originalFogEnd, originalFogColor = nil, nil, nil
 
-  showNotification("🌁 No Fog disabled", 2)
+  showNotification("ðŸŒ No Fog disabled", 2)
 end
 end
 
@@ -1045,13 +1045,13 @@ if not originalSettings.stored then
   end
 
   originalSettings.stored = true
-  print(" � Original FPS settings stored")
+  print(" … Original FPS settings stored")
 end
 end
 
 -- Store original object properties BEFORE modifying them
 local function storeOriginalObjectSettings()
-print("📦 Storing original object settings...")
+print("ðŸ“¦ Storing original object settings...")
 local objectCount = 0
 
 pcall(function()
@@ -1131,7 +1131,7 @@ for _, obj in pairs(workspace:GetDescendants()) do
 end
 end)
 
-print(" � Stored " .. objectCount .. " object settings")
+print(" … Stored " .. objectCount .. " object settings")
 end
 
 -- Restore original settings
@@ -1161,7 +1161,7 @@ if originalSettings.stored then
     terrain.WaterTransparency = originalSettings.WaterTransparency
   end
 
-  print(" � Original FPS settings restored")
+  print(" … Original FPS settings restored")
   end)
 end
 end
@@ -1195,7 +1195,7 @@ end
 
 -- Remove/Disable graphics-heavy objects
 local function optimizeObjects()
-print("🔧 Applying object optimizations...")
+print("ðŸ”§ Applying object optimizations...")
 local optimizedCount = 0
 
 pcall(function()
@@ -1232,12 +1232,12 @@ for _, obj in pairs(workspace:GetDescendants()) do
 end
 end)
 
-print(" � Optimized " .. optimizedCount .. " objects")
+print(" … Optimized " .. optimizedCount .. " objects")
 end
 
 -- Restore ALL graphics objects to their original state
 local function restoreObjects()
-print("🔄 Restoring original object settings...")
+print("ðŸ”„ Restoring original object settings...")
 local restoredCount = 0
 
 pcall(function()
@@ -1285,7 +1285,7 @@ for obj, settings in pairs(originalObjectSettings) do
 end
 end)
 
-print(" � Restored " .. restoredCount .. " objects")
+print(" … Restored " .. restoredCount .. " objects")
 
 -- Clear the stored settings after restore
 originalObjectSettings = {}
@@ -1320,8 +1320,8 @@ if enabled then
   -- Step 3: Start monitoring to maintain optimizations
   spawn(maintainFPSOptimizations)
 
-  showNotification("🚀 FPS Boost enabled! (Low Graphics Mode)", 2)
-  print(" � FPS Boost activated - All original settings stored")
+  showNotification("ðŸš€ FPS Boost enabled! (Low Graphics Mode)", 2)
+  print(" … FPS Boost activated - All original settings stored")
 
 else
   -- Step 1: Stop monitoring
@@ -1331,8 +1331,8 @@ else
   restoreOriginalFPSSettings()
   restoreObjects()
 
-  showNotification("🎨 FPS Boost disabled! (Graphics restored)", 2)
-  print(" � FPS Boost deactivated - All settings restored to original")
+  showNotification("ðŸŽ¨ FPS Boost disabled! (Graphics restored)", 2)
+  print(" … FPS Boost deactivated - All settings restored to original")
 end
 end
 
@@ -1346,7 +1346,7 @@ if not originalAmbient then
   local Lighting = game:GetService("Lighting")
   originalAmbient = Lighting.Ambient
   originalOutdoorAmbient = Lighting.OutdoorAmbient
-  print(" � Original Night Vision settings stored")
+  print(" … Original Night Vision settings stored")
 end
 end
 
@@ -1385,7 +1385,7 @@ if originalAmbient and originalOutdoorAmbient then
     Lighting.GlobalShadows = originalSettings.GlobalShadows
   end
 
-  print(" � Night Vision settings restored")
+  print(" … Night Vision settings restored")
 end
 end
 
@@ -1408,8 +1408,8 @@ if enabled then
   end
   end)
 
-  showNotification("🌙 Night Vision enabled!", 2)
-  print(" � Night Vision activated")
+  showNotification("ðŸŒ™ Night Vision enabled!", 2)
+  print(" … Night Vision activated")
 
 else
   -- Disconnect monitoring
@@ -1421,8 +1421,8 @@ else
   -- Restore original settings
   restoreNightVisionSettings()
 
-  showNotification("🌅 Night Vision disabled!", 2)
-  print(" � Night Vision deactivated")
+  showNotification("ðŸŒ… Night Vision disabled!", 2)
+  print(" … Night Vision deactivated")
 end
 end
 
@@ -1433,7 +1433,7 @@ local function storeOriginalFOV()
 if not originalFOV then
   originalFOV = Camera.FieldOfView
   currentFOV = originalFOV
-  print(" � Original FOV stored:", originalFOV)
+  print(" … Original FOV stored:", originalFOV)
 end
 end
 
@@ -1449,7 +1449,7 @@ end
 local function restoreOriginalFOV()
 if originalFOV then
   applyFOV(originalFOV)
-  print(" � Original FOV restored:", originalFOV)
+  print(" … Original FOV restored:", originalFOV)
 end
 end
 
@@ -1479,14 +1479,14 @@ if enabled then
   applyFOV(settings.fieldOfView)
 
   showNotification("   Field of View enabled!", 2)
-  print(" � customFOV feature activated")
+  print(" … customFOV feature activated")
 
 else
   -- Restore original FOV
   restoreOriginalFOV()
 
   showNotification("   Field of View disabled!", 2)
-  print(" � customFOV feature deactivated")
+  print(" … customFOV feature deactivated")
 end
 end
 
@@ -1716,14 +1716,14 @@ for _, item in pairs(itemsFolder:GetChildren()) do
       else
         itemsFound[itemName] = 1
       end
-      print(" � Found: " .. itemName)
+      print(" … Found: " .. itemName)
     else
       print("   Blacklisted: " .. itemName)
     end
   end
 end
 
-print(" � Scan complete. Found " .. tostring(#itemsFound) .. " unique items")
+print(" … Scan complete. Found " .. tostring(#itemsFound) .. " unique items")
 return itemsFound
 end
 
@@ -1734,7 +1734,7 @@ if not listFrame or not listFrame.Parent then
   return
 end
 
-print("🔄 Updating UI with items...")
+print("ðŸ”„ Updating UI with items...")
 
 -- Clear existing items
 for _, child in pairs(listFrame:GetChildren()) do
@@ -1747,7 +1747,7 @@ end
 local sortedItems = {}
 for itemName, count in pairs(items) do
   table.insert(sortedItems, {name = itemName, count = count})
-  print("📝 Adding to UI: " .. itemName .. " (x" .. count .. ")")
+  print("ðŸ“ Adding to UI: " .. itemName .. " (x" .. count .. ")")
 end
 
 -- Sort alphabetically
@@ -1787,13 +1787,13 @@ for i, itemData in ipairs(sortedItems) do
 
   yOffset = yOffset + itemHeight + itemSpacing
 
-  print(" � Created UI element for: " .. itemData.name)
+  print(" … Created UI element for: " .. itemData.name)
 end
 
 -- Update canvas size untuk scrolling
 listFrame.CanvasSize = UDim2.new(0, 0, 0, yOffset + 10)
 
-print(" � Item list UI updated: " .. #sortedItems .. " items displayed")
+print(" … Item list UI updated: " .. #sortedItems .. " items displayed")
 end
 
 -- FIXED: Manual update dengan better error handling
@@ -1804,7 +1804,7 @@ if not listFrame then
   return
 end
 
-print("🔄 Manual update started...")
+print("ðŸ”„ Manual update started...")
 
 -- Wrap dalam pcall untuk handle error
 local success, result = pcall(function()
@@ -1814,9 +1814,9 @@ local items = scanWorkspaceItems()
 local itemCount = 0
 for name, count in pairs(items) do
   itemCount = itemCount + 1
-  print("📋 Item found: " .. name .. " (x" .. count .. ")")
+  print("ðŸ“‹ Item found: " .. name .. " (x" .. count .. ")")
 end
-print("📊 Total unique items: " .. itemCount)
+print("ðŸ“Š Total unique items: " .. itemCount)
 
 if ItemListSystem then
   ItemListSystem.items = items
@@ -1833,7 +1833,7 @@ return true
 end)
 
 if success then
-  print(" � Manual update completed successfully")
+  print(" … Manual update completed successfully")
   if showNotification then
     showNotification("Item list updated!", 2)
   end
@@ -2020,7 +2020,7 @@ end
 
 -- FIXED: Update button functionality
 updateButton.MouseButton1Click:Connect(function()
-print("🔘 Update List button clicked")
+print("ðŸ”˜ Update List button clicked")
 updateButton.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
 updateButton.Text = "Updating..."
 
@@ -2038,7 +2038,7 @@ end)
 
 -- FIXED: Auto update button functionality
 autoUpdateButton.MouseButton1Click:Connect(function()
-print("🔘 Auto Update button clicked")
+print("ðŸ”˜ Auto Update button clicked")
 
 ItemListSystem.autoUpdateEnabled = not ItemListSystem.autoUpdateEnabled
 
@@ -2047,7 +2047,7 @@ if ItemListSystem.autoUpdateEnabled then
   autoUpdateButton.Text = "Auto Update: ON"
   ItemListSystem.lastCountdownTime = tick()
   startAutoUpdate(listFrame, statusLabel, countdownLabel)
-  print(" � Auto update enabled")
+  print(" … Auto update enabled")
 else
   autoUpdateButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
   autoUpdateButton.Text = "Auto Update: OFF"
@@ -2059,11 +2059,11 @@ end)
 -- FIXED: Initial scan dengan delay
 spawn(function()
 wait(2) -- Give time for everything to load
-print("🔄 Starting initial scan...")
+print("ðŸ”„ Starting initial scan...")
 manualUpdateItemList(listFrame, statusLabel)
 end)
 
-print(" � Item List Frame created successfully")
+print(" … Item List Frame created successfully")
 return container
 end
 
@@ -2124,7 +2124,7 @@ else
   end
 
   restoreOriginalLightingValues()
-  showNotification("🌅 Always Bright disabled", 2)
+  showNotification("ðŸŒ… Always Bright disabled", 2)
 end
 end
 
@@ -2154,7 +2154,7 @@ if enabled then
   applyAlwaysNight()
   LightingConnection = RunService.RenderStepped:Connect(applyAlwaysNight)
 
-  showNotification("🌙 Always Night enabled!", 2)
+  showNotification("ðŸŒ™ Always Night enabled!", 2)
 else
   if LightingConnection then
     LightingConnection:Disconnect()
@@ -2162,7 +2162,7 @@ else
   end
 
   restoreOriginalLightingValues()
-  showNotification("🌛 Always Night disabled", 2)
+  showNotification("ðŸŒ› Always Night disabled", 2)
 end
 end
 
@@ -2193,7 +2193,7 @@ if enabled then
   applyFullHD()
   LightingConnection = RunService.RenderStepped:Connect(applyFullHD)
 
-  showNotification(" � Full HD enabled!", 2)
+  showNotification(" ¨ Full HD enabled!", 2)
 else
   if LightingConnection then
     LightingConnection:Disconnect()
@@ -2203,7 +2203,7 @@ else
   if originalBrightness then
     Lighting.Brightness = originalBrightness
   end
-  showNotification("🔆 Full HD disabled", 2)
+  showNotification("ðŸ”† Full HD disabled", 2)
 end
 end
 
@@ -2483,7 +2483,7 @@ if not ESPSystem.enabled[espType] then
   return
 end
 
-print("🔄 ESP: Activating " .. espType)
+print("ðŸ”„ ESP: Activating " .. espType)
 
 -- Clear old ESP first
 for espKey, espList in pairs(ESPSystem.activeESP) do
@@ -2666,8 +2666,8 @@ for i, targetName in ipairs(targets) do
 
   if newState then
     targetButton.BackgroundColor3 = Color3.fromRGB(0, 120, 200)
-    targetButton.Text = targetName .. "  �"
-    print(" � ESP: Selected " .. targetName)
+    targetButton.Text = targetName .. "  “"
+    print(" … ESP: Selected " .. targetName)
   else
     targetButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     targetButton.Text = targetName
@@ -2708,7 +2708,7 @@ dropdownButton.MouseButton1Click:Connect(function()
 pcall(function()
 isExpanded = not isExpanded
 selectionFrame.Visible = isExpanded
-dropdownButton.Text = "Select Targets " .. (isExpanded and "▲" or "  ")
+dropdownButton.Text = "Select Targets " .. (isExpanded and "â–²" or "  ")
 end)
 end)
 
@@ -2838,23 +2838,23 @@ for i, targetName in ipairs(HitboxSystem.targets) do
   -- Reset all buttons
   for _, btn in pairs(targetButtons) do
     btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    btn.Text = btn.Text:gsub("  �", "")
+    btn.Text = btn.Text:gsub("  “", "")
   end
 
   -- Highlight selected button
   targetButton.BackgroundColor3 = Color3.fromRGB(0, 120, 200)
-  targetButton.Text = targetName .. "  �"
+  targetButton.Text = targetName .. "  “"
 
   -- Set selected target
   HitboxSystem.selectedTarget = targetName
   dropdownButton.Text = "Target: " .. targetName .. "   "
 
-  print(" � Hitbox: Selected " .. targetName)
+  print(" … Hitbox: Selected " .. targetName)
   showNotification("Selected: " .. targetName, 1)
 
   -- Close dropdown
   selectionFrame.Visible = false
-  dropdownButton.Text = dropdownButton.Text:gsub("▲", "  ")
+  dropdownButton.Text = dropdownButton.Text:gsub("â–²", "  ")
   end)
   end)
 end
@@ -2882,7 +2882,7 @@ dropdownButton.MouseButton1Click:Connect(function()
 pcall(function()
 isExpanded = not isExpanded
 selectionFrame.Visible = isExpanded
-dropdownButton.Text = dropdownButton.Text:gsub(isExpanded and "  " or "▲", isExpanded and "▲" or "  ")
+dropdownButton.Text = dropdownButton.Text:gsub(isExpanded and "  " or "â–²", isExpanded and "â–²" or "  ")
 end)
 end)
 
@@ -2906,7 +2906,7 @@ testESP = function(targetName)
 ESPSystem.enabled.animals = true
 ESPSystem.selected.animals[targetName or "Bunny"] = true
 activateESPForCategory("animals")
-print("🧪 ESP Test: Looking for " .. (targetName or "Bunny"))
+print("ðŸ§ª ESP Test: Looking for " .. (targetName or "Bunny"))
 end,
 
 clearAllESP = function()
@@ -2914,7 +2914,7 @@ for espType, _ in pairs(ESPSystem.enabled) do
   ESPSystem.enabled[espType] = false
   deactivateESPForCategory(espType)
 end
-print("🧹 ESP: All cleared")
+print("ðŸ§¹ ESP: All cleared")
 end
 }
 
@@ -3040,7 +3040,7 @@ contentFrame.BackgroundTransparency = 1
 contentFrame.Position = UDim2.new(0, 0, 0.18, 0)
 contentFrame.Size = UDim2.new(1, 0, 0.82, 0)
 
---  � ANIMASI STARTUP SMOOTH
+--  ¨ ANIMASI STARTUP SMOOTH
 spawn(
 function()
 wait(0.1) -- Delay sedikit
@@ -3178,7 +3178,7 @@ button.MouseButton1Click:Connect(
 function()
 isToggled = not isToggled
 button.BackgroundColor3 = isToggled and Color3.fromRGB(0, 150, 255) or Color3.fromRGB(60, 60, 60)
-button.Text = text .. (isToggled and "  �" or "   ")
+button.Text = text .. (isToggled and "  …" or "   ")
 if callback then
   callback(isToggled)
 end
@@ -3835,7 +3835,7 @@ task.wait(0.5)
 if not tree.model.Parent then
   TreesChopped = TreesChopped + 1
   ProcessedTrees[tree.model] = true
-  showNotification(" � Chopped: " .. tree.name, 1)
+  showNotification(" … Chopped: " .. tree.name, 1)
 end
 end
 )
@@ -3954,7 +3954,7 @@ local farmInfoLabel = Instance.new("TextLabel")
 farmInfoLabel.Name = "FarmInfoLabel"
 farmInfoLabel.Size = UDim2.new(1, 0, 0.05, 0)
 farmInfoLabel.BackgroundTransparency = 1
-farmInfoLabel.Text = "🌳 Trees: 0 |  � Chopped: 0"
+farmInfoLabel.Text = "ðŸŒ³ Trees: 0 |  … Chopped: 0"
 farmInfoLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 farmInfoLabel.TextSize = 14
 farmInfoLabel.Font = Enum.Font.Gotham
@@ -3968,7 +3968,7 @@ while true do
 wait(1)
 if farmInfoLabel and farmInfoLabel.Parent then
   local treeCount = #CurrentTargets
-  farmInfoLabel.Text = string.format("🌳 Trees: %d |  � Chopped: %d", treeCount, TreesChopped)
+  farmInfoLabel.Text = string.format("ðŸŒ³ Trees: %d |  … Chopped: %d", treeCount, TreesChopped)
 end
 end
 end
@@ -4079,7 +4079,7 @@ local function findItemForTeleport(itemName)
     for _, item in pairs(itemsFolder:GetChildren()) do
         if item.Name == itemName then
             table.insert(foundItems, item)
-            print(" � Found for teleport:", itemName)
+            print(" … Found for teleport:", itemName)
         end
     end
 
@@ -4089,13 +4089,13 @@ local function findItemForTeleport(itemName)
             for _, item in pairs(subfolder:GetChildren()) do
                 if item.Name == itemName then
                     table.insert(foundItems, item)
-                    print(" � Found in subfolder:", itemName)
+                    print(" … Found in subfolder:", itemName)
                 end
             end
         end
     end
 
-    print("📊 Total found for teleport:", #foundItems)
+    print("ðŸ“Š Total found for teleport:", #foundItems)
     return foundItems
 end
 
@@ -4169,7 +4169,7 @@ local teleportCFrame = CFrame.new(targetPosition + Vector3.new(0, 5, 0)) -- 5 st
 character.HumanoidRootPart.CFrame = teleportCFrame
 
 showNotification("Teleported to " .. itemName .. "!", 2)
-print(" � Successfully teleported to " .. itemName .. " at position:", targetPosition)
+print(" … Successfully teleported to " .. itemName .. " at position:", targetPosition)
 end)
 
 wait(0.5)
@@ -4886,7 +4886,7 @@ layout.Padding = UDim.new(0, 10)
 layout.Parent = frame
 end
 
--- 🟩 Kolom kiri (sama seperti sebelumnya)
+-- ðŸŸ© Kolom kiri (sama seperti sebelumnya)
 createToggleButton(leftFrame, "Fly", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleFly)
 createToggleButton(leftFrame, "Noclip", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleNoclip)
 createToggleButton(leftFrame, "Infinite Jump", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleJump)
@@ -4989,13 +4989,13 @@ end
 
 
 
--- 🟦 Kolom kanan - DENGAN TELEPORT BARU
+-- ðŸŸ¦ Kolom kanan - DENGAN TELEPORT BARU
 createToggleButton(rightFrame, "AutoFarm", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleAutoFarm)
 createToggleButton(rightFrame, "God Mode", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleGodMode)
 createToggleButton(rightFrame, "Infinite Hunger", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleInfiniteHunger)
 createToggleButton(rightFrame, "Kill Aura", UDim2.new(0, 0, 0.05, 0), UDim2.new(1, 0, 0.05, 0), toggleKillAura)
 
---  � BAGIAN BARU: Container untuk kedua teleport
+--  ¨ BAGIAN BARU: Container untuk kedua teleport
 local teleportContainer = Instance.new("Frame")
 teleportContainer.Name = "TeleportContainer"
 teleportContainer.Size = UDim2.new(1, 0, 0, 200) -- Fixed height
@@ -5021,7 +5021,7 @@ teleportItems,
 teleportToLocation
 )
 
---  � TELEPORT TO PLAYER (kanan) - BARU!
+--  ¨ TELEPORT TO PLAYER (kanan) - BARU!
 local playerList = getPlayerList()
 if #playerList == 0 then
 table.insert(playerList, "No Players")
@@ -5340,12 +5340,12 @@ local function updateChestList()
     -- Update all buttons
     for _, btn in pairs(chestButtons) do
       btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-      btn.Text = btn.Text:gsub("  �", "")
+      btn.Text = btn.Text:gsub("  “", "")
     end
 
     -- Highlight selected button
     chestButton.BackgroundColor3 = Color3.fromRGB(0, 120, 200)
-    chestButton.Text = chestData.name .. "  �"
+    chestButton.Text = chestData.name .. "  “"
 
     -- Set selected chest
     ChestSystem.selectedChest = chestData
@@ -5401,7 +5401,7 @@ isExpanded = not isExpanded
 selectionFrame.Visible = isExpanded
 
 if isExpanded then
-  dropdownButton.Text = "Select Chest ▲"
+  dropdownButton.Text = "Select Chest â–²"
   updateChestList() -- Refresh chest list when opened
 else
   dropdownButton.Text = "Select Chest   "
@@ -5836,7 +5836,7 @@ page.BackgroundTransparency = 1
 page.Size = UDim2.new(1, 0, 1, 0)
 page.Visible = false
 
---  � FRAME UTAMA TUNGGAL (Welcome + Avatar + User Info + FPS/Ping + Disclaimer + Server)
+--  … FRAME UTAMA TUNGGAL (Welcome + Avatar + User Info + FPS/Ping + Disclaimer + Server)
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "MainUserFrame"
 mainFrame.Parent = page
@@ -5849,7 +5849,7 @@ local mainCorner = Instance.new("UICorner")
 mainCorner.CornerRadius = UDim.new(0, 8)
 mainCorner.Parent = mainFrame
 
--- 1.  � WELCOME TEXT (BAGIAN ATAS DALAM FRAME)
+-- 1.  … WELCOME TEXT (BAGIAN ATAS DALAM FRAME)
 local welcomeLabel = Instance.new("TextLabel")
 welcomeLabel.Name = "WelcomeTitle"
 welcomeLabel.Parent = mainFrame
@@ -5862,7 +5862,7 @@ welcomeLabel.Font = Enum.Font.GothamBold
 welcomeLabel.TextSize = 22
 welcomeLabel.TextXAlignment = Enum.TextXAlignment.Center
 
--- 2.  � AVATAR (KIRI BAWAH WELCOME)
+-- 2.  … AVATAR (KIRI BAWAH WELCOME)
 local avatarFrame = Instance.new("Frame")
 avatarFrame.Name = "AvatarFrame"
 avatarFrame.Parent = mainFrame
@@ -5897,7 +5897,7 @@ avatarImage.Image = thumbnailUrl
 end
 end)
 
--- 3.  � USER INFO (TENGAH, SEBELAH AVATAR)
+-- 3.  … USER INFO (TENGAH, SEBELAH AVATAR)
 local userInfoFrame = Instance.new("Frame")
 userInfoFrame.Name = "UserInfoFrame"
 userInfoFrame.Parent = mainFrame
@@ -5957,7 +5957,7 @@ contactLabel.Font = Enum.Font.Gotham
 contactLabel.TextSize = 10
 contactLabel.TextXAlignment = Enum.TextXAlignment.Center
 
--- 4.  � FPS & PING (POJOK KANAN ATAS)
+-- 4.  … FPS & PING (POJOK KANAN ATAS)
 local statusFrame = Instance.new("Frame")
 statusFrame.Name = "StatusFrame"
 statusFrame.Parent = mainFrame
@@ -5991,7 +5991,7 @@ pingLabel.Font = Enum.Font.GothamBold
 pingLabel.TextSize = 12
 pingLabel.TextXAlignment = Enum.TextXAlignment.Center
 
--- 5.  �  (BAWAH AVATAR, BERJEJER KANAN)
+-- 5.  …  (BAWAH AVATAR, BERJEJER KANAN)
 local disclaimerLabel = Instance.new("TextLabel")
 disclaimerLabel.Name = "DisclaimerLabel"
 disclaimerLabel.Parent = mainFrame
@@ -6006,7 +6006,7 @@ disclaimerLabel.TextXAlignment = Enum.TextXAlignment.Left
 disclaimerLabel.TextYAlignment = Enum.TextYAlignment.Top
 disclaimerLabel.TextWrapped = true
 
--- 6.  � SERVER INFO (BAGIAN BAWAH DALAM FRAME YANG SAMA)
+-- 6.  … SERVER INFO (BAGIAN BAWAH DALAM FRAME YANG SAMA)
 local serverLabel = Instance.new("TextLabel")
 serverLabel.Name = "ServerLabel"
 serverLabel.Parent = mainFrame
@@ -6020,13 +6020,13 @@ serverLabel.TextSize = 12
 serverLabel.TextXAlignment = Enum.TextXAlignment.Center
 serverLabel.TextYAlignment = Enum.TextYAlignment.Center
 
---  � TYPEWRITER EFFECT untuk Welcome
+--  … TYPEWRITER EFFECT untuk Welcome
 spawn(function()
 wait(0.5)
-typewriterEffect(welcomeLabel, "Welcome, " .. Player.Name .. " 👋", 0.05)
+typewriterEffect(welcomeLabel, "Welcome, " .. Player.Name .. " ðŸ‘‹", 0.05)
 end)
 
---  � UPDATE FPS & PING REAL-TIME
+--  … UPDATE FPS & PING REAL-TIME
 spawn(function()
 while page.Parent do
 wait(1)
@@ -6070,7 +6070,7 @@ TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
 )
 showTween:Play()
 else
--- 🎯 ENHANCED HIDE ANIMATION (Yang ditingkatkan)
+-- ðŸŽ¯ ENHANCED HIDE ANIMATION (Yang ditingkatkan)
 
 -- Step 1: Scale down sedikit + rotate
 local prepareHide =
@@ -6157,7 +6157,7 @@ local allTabs = {
 local isTransitioning = false
 local currentPage = nil
 
---  � FUNGSI SMOOTH PAGE TRANSITION
+--  ¨ FUNGSI SMOOTH PAGE TRANSITION
 local function showPage(pageName)
 if isTransitioning then
   return
@@ -6214,7 +6214,7 @@ currentPage = targetPage
 currentTab = pageName
 end
 
---  � FUNGSI HOVER EFFECTS UNTUK TABS
+--  ¨ FUNGSI HOVER EFFECTS UNTUK TABS
 local function addTabHoverEffects(tab, tabName)
 tab.MouseEnter:Connect(
 function()
@@ -6258,7 +6258,7 @@ visualTab.MouseButton1Click:Connect(function() showPage("Visual") end)
 infoTab.MouseButton1Click:Connect(function() showPage("Info") end)
 settingsTab.MouseButton1Click:Connect(function() showPage("Settings") end)
 
---  � SHOW USER PAGE IMMEDIATELY (DEFAULT)
+--  ¨ SHOW USER PAGE IMMEDIATELY (DEFAULT)
 spawn(
 function()
 wait(0.2)
@@ -6281,7 +6281,7 @@ visualPage.Visible = false
 infoPage.Visible = false
 settingsPage.Visible = false
 
-print(" � User page displayed successfully!")
+print(" … User page displayed successfully!")
 end
 )
 end
@@ -6338,7 +6338,7 @@ end
 originalSettings = {}
 
 -- Reset customFOV & Night Vision
-CustomFOVEnabled = false  --  � VARIABLE NAME SESUAI
+CustomFOVEnabled = false  --  … VARIABLE NAME SESUAI
 if originalFOV then
 Camera.FieldOfView = originalFOV
 end
@@ -6429,7 +6429,7 @@ end
 end
 )
 wait(7.5) -- Simple wait - loading takes 6 seconds + 1.5 buffer
-print("� MORTYHUB Main GUI Starting...")
+print("¯ MORTYHUB Main GUI Starting...")
 -- Initial GUI setup
 setupGui()
 -- Start persistent monitors
@@ -6462,7 +6462,7 @@ toggleButton.Font = Enum.Font.GothamBold
 toggleButton.ZIndex = 999
 toggleButton.Active = true
 toggleButton.Draggable = true
-toggleButton.Parent = toggleGui --  � Parent ke ScreenGui!
+toggleButton.Parent = toggleGui --  … Parent ke ScreenGui!
 --  Tambahkan lingkaran
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(1, 0)
@@ -6476,7 +6476,7 @@ if gui then
 end
 end
 )
-print(" � Toggle button berhasil dibuat")
+print(" … Toggle button berhasil dibuat")
 end
 )
 -- Cleanup on exit
