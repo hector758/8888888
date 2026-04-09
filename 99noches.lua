@@ -6489,85 +6489,16 @@ end
 end
 end
 )
--- Update player list secara otomatis
-spawn(
-function()
-while wait(5) do -- Update setiap 5 detik
--- Update hanya jika GUI sudah dibuat dan tab Main sedang aktif
-if MORTYHUBGui and currentTab == "Main" then
-  pcall(
-  function()
-    -- Cari teleport container
-    local mainPage =
-    MORTYHUBGui:FindFirstChild("MainFrame"):FindFirstChild("ContentFrame"):FindFirstChild(
-    "MainPage"
-    )
-    if mainPage then
-      local rightColumn = mainPage:FindFirstChild("RightColumn")
-      if rightColumn then
-        local teleportContainer = rightColumn:FindFirstChild("TeleportContainer")
-        if teleportContainer then
-          -- Cari listbox "TP to Player"
-          for _, child in pairs(teleportContainer:GetChildren()) do
-            if child:IsA("Frame") and child.Name:find("TP to Player") then
-              local scrollFrame = child:FindFirstChild("ScrollFrame")
-              if scrollFrame then
-                -- Hapus tombol lama
-                for _, btn in pairs(scrollFrame:GetChildren()) do
-                  if btn:IsA("TextButton") then
-                    btn:Destroy()
-                  end
-                end
-
-                -- Buat tombol baru dengan daftar player terbaru
-                local playerList = getPlayerList()
-                if #playerList == 0 then
-                  playerList = {"No Players"}
-                end
-
-                for i, playerName in ipairs(playerList) do
-                  local itemButton = Instance.new("TextButton")
-                  itemButton.Name = "Item" .. i
-                  itemButton.Parent = scrollFrame
-                  itemButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-                  itemButton.BorderSizePixel = 0
-                  itemButton.Size = UDim2.new(1, 0, 0, 25)
-                  itemButton.Font = Enum.Font.Gotham
-                  itemButton.Text = playerName
-                  itemButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-                  itemButton.TextScaled = true
-
-                  local itemCorner = Instance.new("UICorner")
-                  itemCorner.CornerRadius = UDim.new(0, 4)
-                  itemCorner.Parent = itemButton
-
-                  -- Event click untuk teleport
-                  if playerName ~= "No Players" then
-                    itemButton.MouseButton1Click:Connect(
-                    function()
-                      teleportToPlayer(playerName)
-                    end
-                    )
-                  end
-                end
-
-                -- Update canvas size
-               scrollFrame.CanvasSize = UDim2.new(0, 0, 0, #playerList * 27)
-              end
-              break
+                -- Actualizar el tamaño del scroll
+                scrollFrame.CanvasSize = UDim2.new(0, 0, 0, #playerList * 27)
             end
-          end
         end
-      end
-    end
-  end
-  )
+    end)
 end
-end
-end
-)
+
+-- Ejecutar la función para que cargue la lista
+updatePlayerList()
+
 print("MORTYHUB Script loaded successfully!")
 print("Made for 99 Nights in the Forest")
 print("Optimized for mobile devices")
-print("Version: 1.0")
-print("Toggle button dibuat:", toggleButton)
